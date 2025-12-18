@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Client-side CAPTCHA Demo</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main class="card">
+    <h1>Client-side CAPTCHA (Demo)</h1>
+    <p class="muted">CAPTCHA is generated and validated in JavaScript (intentionally weak).</p>
+
+    <div class="captcha-row">
+      <canvas id="captchaCanvas" width="220" height="70" aria-label="captcha canvas"></canvas>
+      <button id="refreshBtn" type="button" class="btn">↻</button>
+    </div>
+
+    <label class="label" for="captchaInput">Enter the text you see</label>
+    <input id="captchaInput" class="input" autocomplete="off" placeholder="Type CAPTCHA here" />
+
+    <div class="actions">
+      <button id="verifyBtn" type="button" class="btn primary">Verify</button>
+      <span id="result" class="result" role="status" aria-live="polite"></span>
+    </div>
+
+    <hr />
+
+    <details>
+      <summary>What to screenshot</summary>
+      <ul>
+        <li>DevTools → Network → <code>captcha.js</code></li>
+        <li>DevTools → Sources → <code>captcha.js</code> showing generation logic</li>
+        <li>The canvas CAPTCHA + “Verify” result</li>
+      </ul>
+    </details>
+  </main>
+
+  <!-- Separate file so it appears in Network tab -->
+  <script src="./captcha.js"></script>
+</body>
+</html>
+
