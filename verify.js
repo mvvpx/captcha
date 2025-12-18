@@ -7,10 +7,9 @@
   const input = document.getElementById("captchaInput");
   const result = document.getElementById("result");
 
-  // Stored in JS (weak by design)
   let currentCaptcha = "";
 
-  const ALPHABET = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"; // avoid O/0, I/1
+  const ALPHABET = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
   const randInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
   function randomText(len = 5) {
@@ -20,14 +19,12 @@
   }
 
   function drawNoise() {
-    // dots
     for (let i = 0; i < 130; i++) {
       ctx.fillStyle = `rgba(${randInt(120,255)},${randInt(120,255)},${randInt(120,255)},${Math.random() * 0.35})`;
       ctx.beginPath();
       ctx.arc(randInt(0, canvas.width), randInt(0, canvas.height), Math.random() * 1.6, 0, Math.PI * 2);
       ctx.fill();
     }
-    // lines
     for (let i = 0; i < 3; i++) {
       ctx.strokeStyle = `rgba(${randInt(80,220)},${randInt(80,220)},${randInt(80,220)},${Math.random() * 0.5})`;
       ctx.lineWidth = randInt(1, 2);
@@ -43,7 +40,6 @@
   }
 
   function renderCaptcha(text) {
-    // background
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     const grad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
     grad.addColorStop(0, "#0f1a33");
@@ -52,8 +48,6 @@
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     drawNoise();
-
-    // characters
     const baseX = 18;
     const y = 46;
     for (let i = 0; i < text.length; i++) {
