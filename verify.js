@@ -9,10 +9,10 @@
 
   let currentCaptcha = "";
 
-  const ALPHABET = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+  const ALPHABET = "ABCDEFGHJKLMNPQRSTUVWXYZ";
   const randInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
-  function randomText(len = 5) {
+  function randomText(len = 3) {
     let s = "";
     for (let i = 0; i < len; i++) s += ALPHABET[randInt(0, ALPHABET.length - 1)];
     return s;
